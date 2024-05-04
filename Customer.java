@@ -34,13 +34,15 @@ public class Customer extends User {
             try{
                 String name,lastname;
                 Passwordvalidator vali = new Passwordvalidator();//to check if password is possible
-
+                Namevalidator nameVali = new Namevalidator();
             System.out.println(" Creating An account enter your first name");
             Scanner scan = new Scanner(System.in);
              name = scan.nextLine();
+             nameVali.nameValidator(name);
             this.Firstname = name;
             System.out.println("Enter your last name");
              lastname = scan.nextLine();
+             nameVali.nameValidator(lastname);
             this.Lastname = lastname;
             System.out.println("Enter your password 4 digit");
             int ps = scan.nextInt();
@@ -55,6 +57,9 @@ public class Customer extends User {
                   System.out.println("Password is too big" + e.getMessage());
             }catch(InputMismatchException e){
                  System.out.println("Wrong input");
+            }catch(ValidNameException e){
+                  System.out.println("Wrong name input");
+                 
             }
     
             
